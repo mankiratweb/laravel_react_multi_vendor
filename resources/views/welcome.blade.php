@@ -27,5 +27,28 @@
 <div id="example"></div>
 
 <script src="{{ mix('js/app.js')}}"></script>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.0.1/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyCLp2UdhE8SwQxipy00OERt5cD7J0pwUv8",
+      authDomain: "laravel-ecom-88262.firebaseapp.com",
+      projectId: "laravel-ecom-88262",
+      storageBucket: "laravel-ecom-88262.appspot.com",
+      messagingSenderId: "454576429957",
+      appId: "1:454576429957:web:1acc5f7de1e40f518942ec",
+      measurementId: "G-SVWZRCXCVH"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
     </body>
 </html>
