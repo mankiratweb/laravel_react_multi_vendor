@@ -1,13 +1,22 @@
-import {Navbar,Container,Nav,NavDropdown} from 'react-bootstrap';
-import { Link , useHistory  } from 'react-router-dom';
+ import { Link , useHistory  } from 'react-router-dom';
  
 
 
 function Header(){
   let user , name;
   const history = useHistory();
+
+function logout(){
  
-  
+  localStorage.clear();
+  history.push('/login');
+}
+
+
+
+
+
+ 
     return(
 
 
@@ -33,7 +42,7 @@ function Header(){
                         <li><a className="dropdown-item" href="#!">Settings</a></li>
                         <li><a className="dropdown-item" href="#!">Activity Log</a></li>
                         <li><hr className="dropdown-divider" /></li>
-                        {/* <li><a className="dropdown-item" onClick={logout} >Logout</a></li> */}
+                        <li><a className="dropdown-item" onClick={logout} >Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -48,4 +57,4 @@ function Header(){
 
 
 
-export default Header
+export default Header;

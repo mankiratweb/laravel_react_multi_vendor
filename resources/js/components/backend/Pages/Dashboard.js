@@ -1,18 +1,12 @@
-import Sidebar from '../comman/Sidebar';
- 
-import Header from '../comman/Header';
+import Header from "../comman/Header";
+import Sidebar from "../comman/Sidebar";
 import '../theme_asset/js/scripts'
 
-
 function Dashboard(){
-
-
     return(
         <>
-         <Header />
-
-        
-         <div id="layoutSidenav">
+<Header />
+<div id="layoutSidenav">
 <Sidebar />
 
     <div id="layoutSidenav_content">
@@ -90,11 +84,9 @@ function Dashboard(){
 </div>
 
 
-        
- </>
-
+        </>
     )
 }
 
 
-export default  Dashboard
+export default Dashboard;

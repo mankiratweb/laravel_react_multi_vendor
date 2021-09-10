@@ -1,5 +1,5 @@
 import React, { Link } from 'react-router-dom';
-import '../theme_asset/js/scripts'
+
 
 function Sidebar() {
 
@@ -11,7 +11,7 @@ function Sidebar() {
             <nav className="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div className="sb-sidenav-menu">
                     {
-                        localStorage.getItem('user-info') ?
+                        !localStorage.getItem('user-info') ?
                             <div className="nav">
                                 <Link className="nav-link" to="/">
                                     <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"></i></div>

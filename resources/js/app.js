@@ -1,1 +1,1 @@
-require('./components/HEExample');
+require('./components/Menubar');
