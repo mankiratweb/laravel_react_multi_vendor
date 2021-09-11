@@ -27,7 +27,7 @@ function Sidebar() {
                                 <div className="collapse" id="cotegories" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                     <nav className="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
 
-                                        <Link className="nav-link collapsed" to="/allcat"  >
+                                        <Link className="nav-link collapsed" to="/allcats"  >
                                             All  Categories
                                         </Link>
 
@@ -89,7 +89,7 @@ function Sidebar() {
                                             All  Tags
                                         </Link>
 
-                                        <Link className="nav-link collapsed" to="/addtags"  >
+                                        <Link className="nav-link collapsed" to="/addtag"  >
                                             Add Tags
                                         </Link>
 
@@ -112,12 +112,12 @@ function Sidebar() {
                                 <div className="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                     <nav className="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
 
-                                        <Link className="nav-link collapsed" to="/pro"  >
+                                        <Link className="nav-link collapsed" to="/allpros"  >
                                             Products
                                         </Link>
 
-                                        <Link className="nav-link collapsed" to="/add"  >
-                                            Add Producnt
+                                        <Link className="nav-link collapsed" to="/addpro"  >
+                                            Add Product
                                         </Link>
 
 
@@ -157,7 +157,7 @@ function Sidebar() {
                 </div>
                 <div className="sb-sidenav-footer">
                     <div className="small">Logged in as:</div>
-                    Start Bootstrap
+                   Multi Vendor
                 </div>
             </nav>
         </div>

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import AdminPanel from './backend/AdminPanel';
 import {Provider} from 'react-redux';
 import store from '../store';
+import { BrowserRouter } from 'react-router-dom'
  
 
 
@@ -17,9 +18,12 @@ function Menubar() {
 
 export default Menubar;
 
-if (document.getElementById('root')) {
+if (document.getElementById('reactroot')) {
     ReactDOM.render(
+        <BrowserRouter>
         <Provider store={store}>
-    <Menubar />
-    </Provider> , document.getElementById('root'));
+     <AdminPanel />  
+    </Provider>
+    </BrowserRouter> , document.getElementById('reactroot'));
+
 }
