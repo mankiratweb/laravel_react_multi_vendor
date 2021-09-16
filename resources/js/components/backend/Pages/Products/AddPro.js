@@ -1,16 +1,15 @@
 import Header from '../../comman/Header';
 import '../../theme_asset/js/scripts';
 import { Form,Image, Alert, FloatingLabel, Button, Tab, Col, Nav, Row, Accordion } from 'react-bootstrap';
-// import { Scrollbars } from 'react-custom-scrollbars';
 import Sidebar from '../../comman/Sidebar';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-// import { Checkbox, Hidden } from '@material-ui/core';
+import { Checkbox, Hidden } from '@material-ui/core';
  
 
 
-// import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined'
-import { ImageAlt, NodeMinusFill } from 'react-bootstrap-icons';
+import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined'
+
 
 
 
@@ -591,10 +590,7 @@ setImagePreview('');
     const formData = new FormData();
 
     // console.warn(attrs)
-
-
-
-    if (longDesc == "" || longDesc == null) {
+   if (longDesc == "" || longDesc == null) {
 
       formData.append('long_desc', null);
    
@@ -1126,7 +1122,7 @@ setError("");
 
                                     <Col xs="2">
 
-                                      {/* <DeleteOutlinedIcon onClick={() => removeAttr(index)}></DeleteOutlinedIcon> */}
+                                      <DeleteOutlinedIcon onClick={() => removeAttr(index)}></DeleteOutlinedIcon>
 
                                     </Col>
 

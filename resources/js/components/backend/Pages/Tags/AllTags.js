@@ -11,30 +11,22 @@ import {deleteSingleTag, getAllTagAc, statusChangeTagButon} from '../../../../Se
 function AllTags() {
 const dispatch = useDispatch()
 const tagsSel = useSelector((state) => state.TagRaducer.tagsData);
-const user = JSON.parse(localStorage.getItem('user-info'))
+const tagError = useSelector((state) => state.TagRaducer.error);
+const user = JSON.parse(localStorage.getItem('user-info'));
+let error = '';
  
-
  console.warn('id',)
 
 
 
 
-    useEffect(() => {
-     
- dispatch(getAllTagAc());
-    
-      
-       
-    
-     }, [])
+    useEffect(() => dispatch(getAllTagAc()),[])
 
      
  
 
   function deleteTag(id){
     
- 
-  
     
      dispatch(deleteSingleTag(id,user.id))
     
@@ -45,15 +37,29 @@ const user = JSON.parse(localStorage.getItem('user-info'))
 
 }
   
-
-  function statusChange(id){
  
-     
-      console.warn("status",dispatch(statusChangeTagButon(id,user.id)));
-dispatch(getAllTagAc());
-  
+ function   statusChange(id){
+ 
+         dispatch(statusChangeTagButon(id,1,101));
+            
+         
+         if(tagError=='change'){
+          error='change';
+            
+         } if(tagError=='not_change'){
+          error='not_change';
+        }
+        dispatch(getAllTagAc());
+
+
+      
+      
 
 }
+
+
+console.warn("error",tagError);
+console.warn("tag",tagsSel);
 
     return (
         <>
@@ -65,6 +71,7 @@ dispatch(getAllTagAc());
 
 
 <div id="layoutSidenav_content">
+
                     <main>
                     <div className="container-fluid px-4">
                         <h1 className="mt-4">Tags</h1>
@@ -74,13 +81,25 @@ dispatch(getAllTagAc());
                          
                             <li  className="breadcrumb-item active"   ><Link to="/addtags">Add </Link></li>
                         </ol>
-                       
+                        {
+                              error=='not_change'?<div className="alert alert-info" role="alert">
+                              Only Admin Can Change This Status 
+                              
+                            </div>:error=='show_not'?<div className="alert alert-danger" role="alert">
+                              This Tag Not Exits
+                               
+                            </div>:  null
+                            }
                      
                         <div className="card mb-4">
                             <div className="card-header">
+                    
                                 <i className="fas fa-table me-1"></i>
                 Tags
                             </div>
+                            
+
+
                             <div className="card-body table-responsive">
                             <Table striped bordered hover size="sm">
   <thead>
@@ -94,6 +113,7 @@ dispatch(getAllTagAc());
   </thead>
   <tbody>
     {
+tagsSel?
 tagsSel.map((item , key)=>
 
 
@@ -121,14 +141,23 @@ tagsSel.map((item , key)=>
 
 
 
-)
-
-
+): 
+tagError=='not-done' ?
+<tr>
+  <td colspan="4">
+<div className="alert alert-info text-center" role="alert">
+ Empty Tags  <Link to='/addtag'> Add Tag</Link>
+</div>
+</td>
+</tr> : 
+ null
 
     }
     
   </tbody>
 </Table>
+ 
+
                             </div>
                         </div>
                     </div>

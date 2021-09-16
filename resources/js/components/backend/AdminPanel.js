@@ -1,38 +1,42 @@
-import { BrowserRouter as Router, Route , Switch } from 'react-router-dom';
+import { BrowserRouter , Route , Switch } from 'react-router-dom';
 import Dashboard from './Pages/Dashboard';
 import '../backend/theme_asset/css/styles.css';
-import '../backend/theme_asset/js/scripts';
 import AllTags from './Pages/Tags/AllTags';
-import AddTags from './Pages/Tags/AddTag';
+import AddTag from './Pages/Tags/AddTag';
+ 
 import AllCat from './Pages/Categories/AllCat';
 import AddCat from './Pages/Categories/AddCat';
 import AllPro from './Pages/Products/AllPro';
 import AddPro from './Pages/Products/AddPro';
+import AllSubCat from './Pages/SubCat/AllSubCat';
+import AddSubCat from './Pages/SubCat/AddSubCat';
 
 
 function AdminPanel(){
     return(
  
  
-        <Router>
+         
 <Switch>
-<Route exact  path="/"> <Dashboard /> </Route>
-    <Route  path="/alltags"> <AllTags /> </Route>
-    <Route  path="/addtag"> <AddTags /> </Route>
+    <Route exact path="/" component={Dashboard} /> 
+    <Route path="/alltags" component={AllTags} /> 
+    <Route path="/addtag" component={AddTag}  /> 
+
+    <Route path="/allcats"  component={AllCat} />  
+    <Route  path="/addcat"  component={AddCat} />  
+
+    <Route   path="/allsubcats"  component={AllSubCat} />  
+    <Route   path="/addsubcat"  component={AddSubCat} />  
 
 
-    <Route  path="/allcats"> <AllCat /> </Route>
-    <Route  path="/addcat"> <AddCat /> </Route>
 
-
-
-    <Route  path="/allpros"> <AllPro /> </Route>
-    <Route  path="/addpro"> <AddPro /> </Route>
+    <Route  path="/allpros"  component={AllPro} />  
+    <Route  path="/addpro"  component={AddPro} />  
 
     
 </Switch>
 
-        </Router>
+       
 
 
        

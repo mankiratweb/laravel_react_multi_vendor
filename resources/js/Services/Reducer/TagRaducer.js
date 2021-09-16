@@ -11,10 +11,19 @@ export  default (state=initialState , {type,payload , msg })=>
     switch (type) {
         case GET_ALL_TAGS:
             console.warn("payload again",payload)
+            if(msg=='done'){
             return{
                 ...state,
-                tagsData: payload
-            }
+                tagsData: payload,
+                error: msg
+            }}
+            else{
+              return{
+                ...state,
+                error: msg
+              }  
+            
+        }
 
         case FIND_SINGLE_TAG:
                 
@@ -47,15 +56,21 @@ export  default (state=initialState , {type,payload , msg })=>
             } 
             
         case CHANGE_STATUS_TAG_BUTTON:
+
+        if(msg=='change'){
             return{
                 ...state,
                 tagsData:state.tagsData.map((tags)=>
                 tags.id==payload.id?payload: tags,
                 
                 ),
-         
+                error:msg         
             }
+        }else{
+           return {error:msg  }
 
+           
+        }
         
         case DELETE_SINGLE_TAG:
             return{

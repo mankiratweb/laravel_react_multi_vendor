@@ -12,7 +12,7 @@ import { createTagAc } from '../../../../Services/Actions/TagActions';
 
 
 
-function AddTags() {
+function AddTag() {
     const dispatch = useDispatch();
     
 const history = useHistory();
@@ -115,6 +115,8 @@ history.push('/alltags');
 
     return (
         <>
+
+
         <Header />
         
         <div id="layoutSidenav">
@@ -126,14 +128,13 @@ history.push('/alltags');
 
 <div id="layoutSidenav_content">
 
-
 {error?<div className="alert alert-danger" role="alert">
   {error}
 </div>:null}
                     <main>
 
 
-
+                    <h1>Add Tag</h1>
                     <ol className="breadcrumb m-4">
                                 <li className="breadcrumb-item"><Link to="/">Dashboard</Link></li>
                                 <li className="breadcrumb-item active"> <Link to="alltags"> Tags</Link> </li>
@@ -207,4 +208,4 @@ data.map((item)=>
     )
 }
 
-export default AddTags
+export default AddTag;

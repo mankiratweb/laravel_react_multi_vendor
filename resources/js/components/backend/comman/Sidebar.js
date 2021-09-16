@@ -1,4 +1,4 @@
-import React, { Link } from 'react-router-dom';
+import React, { Link   } from 'react-router-dom';
 
 
 function Sidebar() {
@@ -6,7 +6,7 @@ function Sidebar() {
 
     return (
 
-
+ 
         <div id="layoutSidenav_nav">
             <nav className="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div className="sb-sidenav-menu">
@@ -54,7 +54,7 @@ function Sidebar() {
                                 <div className="collapse" id="subcategories" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                     <nav className="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
 
-                                        <Link className="nav-link collapsed" to="/allsubcat"  >
+                                        <Link className="nav-link collapsed" to="/allsubcats"  >
                                             All Sub Categories
                                         </Link>
 
@@ -162,7 +162,7 @@ function Sidebar() {
             </nav>
         </div>
 
-
+        
 
 
 

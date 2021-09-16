@@ -14,20 +14,15 @@ import axios from "axios";
 export const getAllTagAc = () => async (dispatch) => {
  
     const result = await axios.get("http://127.0.0.1:8000/api/alltags");
-if( result.data!=0){
+ 
     dispatch({
         type: GET_ALL_TAGS,
-        payload: result.data
-    });
-}else{
-
-    dispatch({
-        type: GET_ALL_TAGS,
+        payload:result.data.result,
+        msg:result.data.msg
         
     });
 
-
-}
+ 
 
 
 }
@@ -130,16 +125,16 @@ export const updatedTag = (formData, id, userId) => async (dispatch) => {
 
 // Start Status change
 
-export const statusChangeTagButon=(id,userId)=> async (dispatch)=>{;
+export const statusChangeTagButon=(id,userId,role_id)=> async (dispatch)=>{;
 
-    const result = await axios.post("http://127.0.0.1:8000/api/change_status/"+id+"/"+userId+"?_method=PUT");
+    const result = await axios.post("http://127.0.0.1:8000/api/change_status/"+id+"/"+userId+"/"+role_id+"?_method=PUT");
 
 
 
 dispatch({
     type: CHANGE_STATUS_TAG_BUTTON,
-    payload:result.data,
-    result: result
+    payload:result.data.result,
+    msg: result.data.msg
 
 })
 

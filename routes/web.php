@@ -16,3 +16,29 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/alltags', function () {
+    return view('welcome');
+});
+
+Route::get('/addtag', function () {
+    return view('welcome');
+});
+Route::get('/allcats', function () {
+    return view('welcome');
+});
+Route::get('/addcat', function () {
+    return view('welcome');
+});
+Route::get('/allsubcats', function () {
+    return view('welcome');
+});
+Route::get('/addsubcat', function () {
+    return view('welcome');
+});
+Route::get('/allpros', function () {
+    return view('welcome');
+});
+Route::get('/addpro', function () {
+    return view('welcome');
+});

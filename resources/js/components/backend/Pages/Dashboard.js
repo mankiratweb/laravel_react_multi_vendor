@@ -1,6 +1,6 @@
 import Header from "../comman/Header";
 import Sidebar from "../comman/Sidebar";
-import '../theme_asset/js/scripts'
+ 
 
 function Dashboard(){
     return(
