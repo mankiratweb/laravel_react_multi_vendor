@@ -3,8 +3,9 @@ import Header from '../../comman/Header';
 import Sidebar from '../../comman/Sidebar';
 import {Form , Button} from 'react-bootstrap';
 import { useState  } from 'react';
- import {Link, useHistory} from 'react-router-dom';
-// import { createSubCatAc , } from '../../../../Services/Actions/SubCatAction';
+import {Link, useHistory} from 'react-router-dom';
+import { createSubCatAc ,  getAllSubCats } from '../../../../Services/Actions/SubCatAction';
+import { getAllcats  } from '../../../../Services/Actions/CatActions';
 import {useDispatch,useSelector} from 'react-redux'
   
 
@@ -20,33 +21,26 @@ const user = JSON.parse(localStorage.getItem('user-info'));
 const [name , setName] = useState("");
 const [status ,setStatus] = useState(1);
 const [catId , setCatId] = useState("");
+const [parentCat , setParentCat] = useState("");
 
 const dispatch = useDispatch();
-const subCatSelector = useSelector(state => state.subCatRaducer)
+const subCatSelector = useSelector(state => state.SubCatRaducer)
+const catSelector = useSelector(state => state.CatRaducer);
 
-
-
-
-
-useEffect( async() => {
-     
  
 
-  let result  = await fetch("http://127.0.0.1:8000/api/allcat");
-  result = await result.json();
-setData(result);
-
- }, [])
 
 
+useEffect(() => {
+   dispatch(getAllcats());
+   dispatch(getAllSubCats());
+}, []);
 
 let [setNamee,setSetNamee]=useState(name)
 
 
  function subCatAdd(){
-    
- 
- 
+   
 const formData = new FormData();
 
 if(name=="" && !name){
@@ -72,9 +66,16 @@ if(status==0){
 else{ 
   formData.append('status',1);
 }
+if(parentCat!=''){
+  formData.append('parent_id',parentCat);
+}
+else{
+  formData.append('parent_id','');
 
+}
 
 formData.append('user_id',user.id);
+formData.append('user_role',user.role);
 
 
 
@@ -90,15 +91,25 @@ if(catId!=='' && catId!=0 && 1!='' && name!=='' && status!=''){
 
 
 
+console.warn('subcatdata',subCatSelector.subCatData[0])
+console.warn('parent id',parentCat)
  
 useEffect(() => {
-  if(subCatSelector.subError=='inserted'){
-    history.push('/allsubcat')
+  if(subCatSelector.subError=='Inserted'){
+    history.push('/allsubcats')
   }else if(subCatSelector.subError=='already'){
-    setError("Sub Category Already Exits Please Diffrent Sub Category Add")
-  }else if(subCatSelector.subError=='error'){
+    setError("Sub Category already Exits  ")
+  }
+  else if(subCatSelector.subError=='error'){
     setError("Some error Please try Again Leater")
-  }else{
+  }
+  else if(subCatSelector.subError=='value_not'){
+    setError("Check Value Some Value Is missing")
+  }
+  else if(subCatSelector.subError=='user_not'){
+    setError("Please Login And try again")
+  }
+  else{
     
   }
   console.warn("SubSelector",subCatSelector)
@@ -155,11 +166,26 @@ useEffect(() => {
   <Form.Select value={catId}  onChange={((e)=>setCatId(e.target.value))} >
 <option value="0">Select Category</option>
 
-{
-data.map((item)=>
+{catSelector.CatData[0]?
+catSelector.CatData.map((item)=>
 
 <option key={item.id} value={item.id}>{item.cat_name}</option>
-)
+):null
+
+}
+
+
+
+</Form.Select>
+<br />
+  <Form.Select value={catId}  onChange={((e)=>setParentCat(e.target.value))} >
+<option value="0">Select Parent Sub Category</option>
+
+{subCatSelector.subCatData[0]?
+subCatSelector.subCatData.map((item)=>
+
+<option key={item.id} value={item.id}>{item.name}</option>
+):null
 
 }
 
@@ -167,23 +193,15 @@ data.map((item)=>
 
 </Form.Select>
  
-{error=='Please Select Category'?<span className="text-danger">{error}</span> :null}
-
-
 
 
      
-    <Form.Control type="text"    className="mt-5 p-3 ip"  onChange={((e)=>setName(e.target.value))} placeholder="Enter Sub Category Name" />
+    <Form.Control type="text"    className="mt-4 p-2 ip"  onChange={((e)=>setName(e.target.value))} placeholder="Enter Sub Category Name" />
     {error=='Please Enter Sub Category Name'?<span className="text-danger">{error}</span> :null}
      <br />
-
-         
-       
-   
-    
-     <Form.Select value={status}  className="ip" onChange={((e)=>setStatus(e.target.value))}>
-  
-    <option value = {1}>Active</option>
+ 
+ <Form.Select value={status}  className="ip" onChange={((e)=>setStatus(e.target.value))}> 
+     <option value = {1}>Active</option>
     <option value={0}>Deactive</option>
   </Form.Select>
  <br />

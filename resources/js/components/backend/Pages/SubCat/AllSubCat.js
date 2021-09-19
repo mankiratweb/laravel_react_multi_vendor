@@ -2,9 +2,9 @@ import React , {useEffect ,useState} from 'react';
 import Header from '../../comman/Header';
 import Sidebar from '../../comman/Sidebar';
 import {Table, Button} from 'react-bootstrap';
-import { Link} from 'react-router-dom';
+import { Link , withRouter} from 'react-router-dom';
 import {useDispatch,useSelector} from 'react-redux';
-// import { getAllSubCats,changeStatusAc, deleteSubcatAc } from '../../../../Services/Actions/SubCatAction';
+import { getAllSubCats,changeStatusAc, deleteSubcatAc } from '../../../../Services/Actions/SubCatAction';
  
 
 function AllSubCat() {
@@ -12,7 +12,7 @@ function AllSubCat() {
     const [data , setData] = useState([]);
     const user = JSON.parse(localStorage.getItem('user-info'));
   const dispatch = useDispatch();
-  const  subCatSelect= useSelector(state => state.subCatRaducer);
+  const  subCatSelect= useSelector(state => state.SubCatRaducer);
   const [error,setError]=useState('');
      
  
@@ -23,28 +23,53 @@ useEffect( () => {
   dispatch(getAllSubCats());
        }, [])
  
+      //  console.warn('check',subCatSelect)
+
+
+
+       
 
  useEffect(() => {
-    console.warn('check',subCatSelect.subCatData)
+     
      if(subCatSelect.subError=='deleted'){
-       setError("delete successfuly")
+      setError('')
+       dispatch(getAllSubCats());
+  
+    }
+     else  if(subCatSelect.subError=='id_delete_empty'){
+      setError("you Can't delete beacause Sub categorie Not Avilable");
+      dispatch(getAllSubCats());
+
+    }
+     else  if(subCatSelect.subError=='vendor_delete_empty'){
+      setError('You delete only Your Sub categories ')
+    }
+     else  if(subCatSelect.subError=='user_delete_empty'){
+      setError('please login and than try to delete ')
       dispatch(getAllSubCats());
     }
-  else  if(subCatSelect.subError=='already_delete'){
-      setError('Already Deleted ')
-    }
-    else if(subCatSelect.subError=='status_changed'){
-setError('Status changed successfully')
+    else if(subCatSelect.subError=='changed'){
+setError('')
 dispatch(getAllSubCats());
-    }else if(subCatSelect.subError=='not_changed'){
-setError("Status Can't Changed Contact Website Owner")
     }
-    else if(subCatSelect.subError=='only_admin'){
-      setError("Only Admin Can Change Status")
+    else if(subCatSelect.subError=='id_status_empty'){
+setError("you can't changed beacause Sub categorie Not Avilable ")
+dispatch(getAllSubCats());
+    }
+    else if(subCatSelect.subError=='user_status_empty'){
+setError("Please login and than try to status change")
+dispatch(getAllSubCats());
+    }
+    else if(subCatSelect.subError=='vendor_status_empty'){
+      setError("you can Change  only your Sub Categories Status")
+      dispatch(getAllSubCats());
     }
     else if(subCatSelect.subError=='error'){
-      setError("Some Techniqule Error Please Try Again Leater")
+      setError("Some Technical Error Please Try Again leater")
+      dispatch(getAllSubCats());
     }
+
+    
  }, [subCatSelect])
 
 
@@ -61,7 +86,6 @@ setError("Status Can't Changed Contact Website Owner")
  
 
  
-console.warn("Empty",subCatSelect.subCatData)
  
     
     
@@ -77,7 +101,7 @@ console.warn("Empty",subCatSelect.subCatData)
 
 <div id="layoutSidenav_content">
                     <main>
-                    {error?<div className="alert alert-danger" role="alert"> {error} </div>:null}
+                    {error?<div className="alert alert-danger text-center" role="alert"> {error} </div>:null}
                     <div className="container-fluid px-4 mt-3">
                           <ol className="breadcrumb mb-4">
                             <li className="breadcrumb-item"><Link to="/">Dashboard</Link></li>
@@ -96,23 +120,23 @@ console.warn("Empty",subCatSelect.subCatData)
                             <Table striped bordered hover size="sm">
   <thead>
     <tr>
-      <th className="text-justify text-capitalize"   >Sno</th>
-      <th style={{width:350}}>Name</th>
-      <th style={{width:150}}>Categories</th>
-     <th style={{width:150}}>Status</th>
-      <th style={{width:350}}>Action</th>
+      <th className="text-center text-capitalize"   >Sno</th>
+      <th className="text-center" style={{width:350}}>Name</th>
+      <th className="text-center" style={{width:150}}>Categories</th>
+     <th className="text-center" style={{width:150}}>Status</th>
+      <th className="text-center"  style={{width:350}}>Action</th>
     </tr>
   </thead>
 
   <tbody>
     {
-       subCatSelect.subError== 'show_all_sub' ?
+    subCatSelect.subCatData[0]?
       
        subCatSelect.subCatData.map((item , key)=>
 
 
-<tr  key={key}>
-      <td>{key+1}</td>
+<tr className="text-center" key={key}>
+      <td >{key+1}</td>
       <td>{item.name}</td>
       <td>{item.cat_name}</td>
      
@@ -129,7 +153,7 @@ console.warn("Empty",subCatSelect.subCatData)
     <Button onClick={(()=>{dispatch(changeStatusAc(item.id,user.id,user.role))})} className=" btnpro btn-danger mb-2">Deactive</Button>
 
     }
-      <Button  onClick={(()=>{dispatch(deleteSubcatAc(item.id,user.id,user.role))})} className=" btnpro btn-danger">Delete</Button>
+      <Button  onClick={(()=>{dispatch(deleteSubcatAc(item.id,user.id,user.role))})} className="btnpro btn-danger">Delete</Button>
       </td>
     </tr>
 
@@ -146,7 +170,7 @@ console.warn("Empty",subCatSelect.subCatData)
   </tbody>
 </Table>
 
-{subCatSelect.subError=='show_not'?
+{subCatSelect.subError=='empty'?
 
 <div class="alert alert-success" role="alert">
   <h4 class="alert-heading">Empty Data ! Add New Sub Category</h4>
@@ -184,4 +208,4 @@ console.warn("Empty",subCatSelect.subCatData)
     )
 }
 
-export default AllSubCat ;
+export default withRouter(AllSubCat) ;

@@ -41,9 +41,9 @@ let dispatch= useDispatch();
 
    let updateState = useSelector(state => state.TagRaducer);
     
- console.warn('TagCheck',TagState.name)
- console.warn('catCheck data', catData.CatData)
- console.warn('user', user.role)
+//  console.warn('TagCheck',TagState.name)
+//  console.warn('catCheck data', catData.CatData)
+//  console.warn('user', user.role)
  
 //  console.warn("Check Finf",TagState)
 
@@ -81,7 +81,7 @@ function tagupdate(){
     formData.append('user_id',id);
     formData.append('user_id',user.id);
     formData.append('user_role',user.role);
-    console.warn('he',formData)
+    // console.warn('he',formData)
   dispatch(updatedTag(formData,id));
  
    }
@@ -90,7 +90,7 @@ function tagupdate(){
 
 }
 
-console.warn('update',updateState.error);
+// console.warn('update',updateState.error);
 
 useEffect(() => {
    

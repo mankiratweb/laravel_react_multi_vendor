@@ -14,7 +14,7 @@ class TagController extends Controller
     // Add Tag Start 
     function addTag(Request $req){
 
-         $req->name;
+        
         $tag = new Tag ; 
         $name = $req->name;
         $tag->name = $req->name;

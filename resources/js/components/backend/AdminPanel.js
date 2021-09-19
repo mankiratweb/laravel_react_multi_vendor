@@ -14,6 +14,7 @@ import Register from './Pages/Users/Register';
 import Login from './Pages/Users/Login';
 import Protected from './Pages/Users/Protected';
 import UpdateTag from './Pages/Tags/UpdateTag';
+import UpdateSubCat from './Pages/SubCat/UpdateSubCat';
 
  
 
@@ -26,7 +27,7 @@ function AdminPanel(){
 <Switch>
     {/* Users Start  */}
 <Route exact path="/register" component={Register} /> 
-    <Route exact path="/login" component={Login} /> 
+<Route exact path="/login" component={Login} /> 
 
     {/* Users End  */}
 
@@ -41,9 +42,10 @@ function AdminPanel(){
 
     <Route path="/allcats" >  <Protected cmp={AllCat} />  </Route>
     <Route  path="/addcat" > <Protected cmp={AddCat} /> </Route> 
-
+    
     <Route   path="/allsubcats" >  <Protected cmp={AllSubCat} /> </Route>
     <Route   path="/addsubcat"  > <Protected cmp={AddSubCat} />  </Route>
+    <Route   path="/updatesubcat/:id"  > <Protected cmp={UpdateSubCat} />  </Route>
 
 
 

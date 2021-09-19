@@ -55,12 +55,21 @@ Route::get('/allcats', function () {
 Route::get('/addcat', function () {
     return view('welcome');
 });
+
+
 Route::get('/allsubcats', function () {
     return view('welcome');
 });
 Route::get('/addsubcat', function () {
     return view('welcome');
 });
+
+Route::get('/updatesubcat/{id}', function () {
+    return view('welcome');
+});
+
+
+
 Route::get('/allpros', function () {
     return view('welcome');
 });

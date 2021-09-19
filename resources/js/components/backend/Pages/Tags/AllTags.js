@@ -14,7 +14,7 @@ const tagsSel = useSelector((state) => state.TagRaducer);
 const tagError = useSelector((state) => state.TagRaducer.error);
 const user = JSON.parse(localStorage.getItem('user-info'));
 let  error = '';
- console.warn('tagsel',tagsSel)
+//  console.warn('tagsel',tagsSel)
 
 
 
@@ -63,7 +63,7 @@ function deleteTagError(){
 
 }
   
-console.warn('role',user.role)
+// console.warn('role',user.role)
  
  function   statusChange(id){
  

@@ -11207,6 +11207,239 @@ var getAllcats = function getAllcats() {
 
 /***/ }),
 
+/***/ "./resources/js/Services/Actions/SubCatAction.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/Services/Actions/SubCatAction.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getSingleSubCat": () => (/* binding */ getSingleSubCat),
+/* harmony export */   "getAllSubCats": () => (/* binding */ getAllSubCats),
+/* harmony export */   "changeStatusAc": () => (/* binding */ changeStatusAc),
+/* harmony export */   "createSubCatAc": () => (/* binding */ createSubCatAc),
+/* harmony export */   "deleteSubcatAc": () => (/* binding */ deleteSubcatAc),
+/* harmony export */   "updateSubCatAc": () => (/* binding */ updateSubCatAc)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Constants */ "./resources/js/Services/Constants.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+var getSingleSubCat = function getSingleSubCat(id) {
+  return /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(dispatch) {
+      var result;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get("http://127.0.0.1:8000/api/findsubcat/" + id);
+
+            case 2:
+              result = _context.sent;
+              dispatch({
+                type: _Constants__WEBPACK_IMPORTED_MODULE_1__.FIND_SINGLE_SUBCATS,
+                payload: result.data.result,
+                msg: result.data.msg
+              });
+
+            case 4:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function (_x) {
+      return _ref.apply(this, arguments);
+    };
+  }();
+}; // Start All Sub Cat 
+
+var getAllSubCats = function getAllSubCats() {
+  return /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(dispatch) {
+      var result;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get("http://127.0.0.1:8000/api/allsubcats");
+
+            case 2:
+              result = _context2.sent;
+              dispatch({
+                type: _Constants__WEBPACK_IMPORTED_MODULE_1__.GET_ALL_SUBCATS,
+                payload: result.data.result,
+                msg: result.data.msg
+              });
+
+            case 4:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function (_x2) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+}; // End All Sub Cat 
+//Change Status All Sb Cat Start  
+
+var changeStatusAc = function changeStatusAc(id, userId, role) {
+  return /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(dispatch) {
+      var result;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post("http://127.0.0.1:8000/api/changesubcatstatus/" + id + "/" + userId + "/" + role + "?_method=PUT");
+
+            case 2:
+              result = _context3.sent;
+              dispatch({
+                type: _Constants__WEBPACK_IMPORTED_MODULE_1__.CHANGE_STATUS_SUBCATS_BUTTON,
+                payload: result.data.result,
+                msg: result.data.msg
+              });
+
+            case 4:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
+
+    return function (_x3) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+}; //Change Status All Sb Cat End
+// Insert add Sub Cat Start 
+
+var createSubCatAc = function createSubCatAc(data) {
+  return /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(dispatch) {
+      var result;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post("http://127.0.0.1:8000/api/addsubcat", data);
+
+            case 2:
+              result = _context4.sent;
+              dispatch({
+                type: _Constants__WEBPACK_IMPORTED_MODULE_1__.CREATE_SUBCATS,
+                payload: result.data.result,
+                msg: result.data.msg
+              });
+
+            case 4:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4);
+    }));
+
+    return function (_x4) {
+      return _ref4.apply(this, arguments);
+    };
+  }();
+}; // Insert add Sub Cat End
+// Delete Sub cart start 
+
+var deleteSubcatAc = function deleteSubcatAc(id, userId, userRole) {
+  return /*#__PURE__*/function () {
+    var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(dispatch) {
+      var result;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              _context5.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default()["delete"]("http://127.0.0.1:8000/api/deletesubcat/" + id + "/" + userId + "/" + userRole);
+
+            case 2:
+              result = _context5.sent;
+              dispatch({
+                type: _Constants__WEBPACK_IMPORTED_MODULE_1__.DELETE_SINGLE_SUBCATS,
+                payload: id,
+                msg: result.data.msg
+              });
+
+            case 4:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5);
+    }));
+
+    return function (_x5) {
+      return _ref5.apply(this, arguments);
+    };
+  }();
+}; // Delete Sub cart End
+// Update Start Sub cat 
+
+var updateSubCatAc = function updateSubCatAc(id, formData) {
+  return /*#__PURE__*/function () {
+    var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(dispatch) {
+      var result;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
+        while (1) {
+          switch (_context6.prev = _context6.next) {
+            case 0:
+              _context6.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post("http://127.0.0.1:8000/api/updatesubcat/" + id + "?_method=PUT", formData);
+
+            case 2:
+              result = _context6.sent;
+              dispatch({
+                type: _Constants__WEBPACK_IMPORTED_MODULE_1__.UPDATED_SUBCATS,
+                payload: result.data.result,
+                msg: result.data.msg
+              });
+
+            case 4:
+            case "end":
+              return _context6.stop();
+          }
+        }
+      }, _callee6);
+    }));
+
+    return function (_x6) {
+      return _ref6.apply(this, arguments);
+    };
+  }();
+}; // Update End  Sub cat
+
+/***/ }),
+
 /***/ "./resources/js/Services/Actions/TagActions.js":
 /*!*****************************************************!*\
   !*** ./resources/js/Services/Actions/TagActions.js ***!
@@ -11690,7 +11923,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var initialState = {
   subCatData: [],
-  subError: ''
+  subError: '',
+  show: ''
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
@@ -11702,9 +11936,10 @@ var initialState = {
 
   switch (type) {
     case _Constants__WEBPACK_IMPORTED_MODULE_0__.GET_ALL_SUBCATS:
-      if (msg == 'show_all_sub') {
+      if (msg == 'show') {
         return _objectSpread(_objectSpread({}, state), {}, {
           subError: msg,
+          show: msg,
           subCatData: payload
         });
       } else {
@@ -11714,7 +11949,7 @@ var initialState = {
       }
 
     case _Constants__WEBPACK_IMPORTED_MODULE_0__.FIND_SINGLE_SUBCATS:
-      if (msg == 'get_single') {
+      if (msg == 'show') {
         return _objectSpread(_objectSpread({}, state), {}, {
           subError: msg,
           subCatData: payload
@@ -11747,6 +11982,7 @@ var initialState = {
         });
       } else {
         return {
+          subCatData: payload,
           subError: msg
         };
       }
@@ -11766,11 +12002,11 @@ var initialState = {
       }
 
     case _Constants__WEBPACK_IMPORTED_MODULE_0__.UPDATED_SUBCATS:
-      if (msg == "updated") {
+      if (msg != "empty_id") {
         return _objectSpread(_objectSpread({}, state), {}, {
           subError: msg,
-          subCatData: state.subCatData.filter(function (subCat) {
-            return subCat.id == payload.id ? state.subCatData : payload;
+          subCatData: isNaN(state.subCatData) ? payload : state.subCatData.filter(function (subCat) {
+            return subCat.id == payload.id ? payload : subCat;
           })
         });
       } else {
@@ -12125,7 +12361,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _Pages_Dashboard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Pages/Dashboard */ "./resources/js/components/backend/Pages/Dashboard.js");
 /* harmony import */ var _backend_theme_asset_css_styles_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../backend/theme_asset/css/styles.css */ "./resources/js/components/backend/theme_asset/css/styles.css");
 /* harmony import */ var _Pages_Tags_AllTags__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pages/Tags/AllTags */ "./resources/js/components/backend/Pages/Tags/AllTags.js");
@@ -12140,7 +12376,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Pages_Users_Login__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Pages/Users/Login */ "./resources/js/components/backend/Pages/Users/Login.js");
 /* harmony import */ var _Pages_Users_Protected__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./Pages/Users/Protected */ "./resources/js/components/backend/Pages/Users/Protected.js");
 /* harmony import */ var _Pages_Tags_UpdateTag__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./Pages/Tags/UpdateTag */ "./resources/js/components/backend/Pages/Tags/UpdateTag.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Pages_SubCat_UpdateSubCat__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./Pages/SubCat/UpdateSubCat */ "./resources/js/components/backend/Pages/SubCat/UpdateSubCat.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -12160,70 +12398,75 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function AdminPanel() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Switch, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Switch, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
       exact: true,
       path: "/register",
       component: _Pages_Users_Register__WEBPACK_IMPORTED_MODULE_10__["default"]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
       exact: true,
       path: "/login",
       component: _Pages_Users_Login__WEBPACK_IMPORTED_MODULE_11__["default"]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
       exact: true,
       path: "/",
-      children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_Pages_Users_Protected__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_Pages_Users_Protected__WEBPACK_IMPORTED_MODULE_12__["default"], {
         cmp: _Pages_Dashboard__WEBPACK_IMPORTED_MODULE_0__["default"]
       }), " "]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
       exact: true,
       path: "/dashboard",
-      children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_Pages_Users_Protected__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_Pages_Users_Protected__WEBPACK_IMPORTED_MODULE_12__["default"], {
         cmp: _Pages_Dashboard__WEBPACK_IMPORTED_MODULE_0__["default"]
       }), "  "]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
       path: "/alltags",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_Pages_Users_Protected__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_Pages_Users_Protected__WEBPACK_IMPORTED_MODULE_12__["default"], {
         cmp: _Pages_Tags_AllTags__WEBPACK_IMPORTED_MODULE_2__["default"]
       }), "  "]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
       path: "/addtag",
-      children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_Pages_Users_Protected__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_Pages_Users_Protected__WEBPACK_IMPORTED_MODULE_12__["default"], {
         cmp: _Pages_Tags_AddTag__WEBPACK_IMPORTED_MODULE_3__["default"]
       }), "  "]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
       path: "/updatetag/:id",
-      children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_Pages_Users_Protected__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_Pages_Users_Protected__WEBPACK_IMPORTED_MODULE_12__["default"], {
         cmp: _Pages_Tags_UpdateTag__WEBPACK_IMPORTED_MODULE_13__["default"]
       }), "  "]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
       path: "/allcats",
-      children: ["  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_Pages_Users_Protected__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      children: ["  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_Pages_Users_Protected__WEBPACK_IMPORTED_MODULE_12__["default"], {
         cmp: _Pages_Categories_AllCat__WEBPACK_IMPORTED_MODULE_4__["default"]
       }), "  "]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
       path: "/addcat",
-      children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_Pages_Users_Protected__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_Pages_Users_Protected__WEBPACK_IMPORTED_MODULE_12__["default"], {
         cmp: _Pages_Categories_AddCat__WEBPACK_IMPORTED_MODULE_5__["default"]
       }), " "]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
       path: "/allsubcats",
-      children: ["  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_Pages_Users_Protected__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      children: ["  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_Pages_Users_Protected__WEBPACK_IMPORTED_MODULE_12__["default"], {
         cmp: _Pages_SubCat_AllSubCat__WEBPACK_IMPORTED_MODULE_8__["default"]
       }), " "]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
       path: "/addsubcat",
-      children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_Pages_Users_Protected__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_Pages_Users_Protected__WEBPACK_IMPORTED_MODULE_12__["default"], {
         cmp: _Pages_SubCat_AddSubCat__WEBPACK_IMPORTED_MODULE_9__["default"]
       }), "  "]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
+      path: "/updatesubcat/:id",
+      children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_Pages_Users_Protected__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        cmp: _Pages_SubCat_UpdateSubCat__WEBPACK_IMPORTED_MODULE_14__["default"]
+      }), "  "]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
       path: "/allpros",
-      children: ["  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_Pages_Users_Protected__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      children: ["  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_Pages_Users_Protected__WEBPACK_IMPORTED_MODULE_12__["default"], {
         cmp: _Pages_Products_AllPro__WEBPACK_IMPORTED_MODULE_6__["default"]
       }), " "]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
       path: "/addpro",
-      children: ["  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_Pages_Users_Protected__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      children: ["  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_15__.jsx)(_Pages_Users_Protected__WEBPACK_IMPORTED_MODULE_12__["default"], {
         cmp: _Pages_Products_AddPro__WEBPACK_IMPORTED_MODULE_7__["default"]
       }), " "]
     })]
@@ -14908,23 +15151,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _comman_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../comman/Header */ "./resources/js/components/backend/comman/Header.js");
-/* harmony import */ var _comman_Sidebar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../comman/Sidebar */ "./resources/js/components/backend/comman/Sidebar.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Form.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _comman_Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../comman/Header */ "./resources/js/components/backend/comman/Header.js");
+/* harmony import */ var _comman_Sidebar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../comman/Sidebar */ "./resources/js/components/backend/comman/Sidebar.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Form.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _Services_Actions_SubCatAction__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../Services/Actions/SubCatAction */ "./resources/js/Services/Actions/SubCatAction.js");
+/* harmony import */ var _Services_Actions_CatActions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../Services/Actions/CatActions */ "./resources/js/Services/Actions/CatActions.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -14942,7 +15179,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
- // import { createSubCatAc , } from '../../../../Services/Actions/SubCatAction';
+
+
 
 
 
@@ -14950,68 +15188,55 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function AddSubCat() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
       data = _useState2[0],
       setData = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
       _useState4 = _slicedToArray(_useState3, 2),
       error = _useState4[0],
       setError = _useState4[1];
 
-  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useHistory)();
+  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useHistory)();
   var user = JSON.parse(localStorage.getItem('user-info'));
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
       _useState6 = _slicedToArray(_useState5, 2),
       name = _useState6[0],
       setName = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(1),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
       _useState8 = _slicedToArray(_useState7, 2),
       status = _useState8[0],
       setStatus = _useState8[1];
 
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
       _useState10 = _slicedToArray(_useState9, 2),
       catId = _useState10[0],
       setCatId = _useState10[1];
 
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useDispatch)();
-  var subCatSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useSelector)(function (state) {
-    return state.subCatRaducer;
-  });
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-    var result;
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return fetch("http://127.0.0.1:8000/api/allcat");
-
-          case 2:
-            result = _context.sent;
-            _context.next = 5;
-            return result.json();
-
-          case 5:
-            result = _context.sent;
-            setData(result);
-
-          case 7:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  })), []);
-
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(name),
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
       _useState12 = _slicedToArray(_useState11, 2),
-      setNamee = _useState12[0],
-      setSetNamee = _useState12[1];
+      parentCat = _useState12[0],
+      setParentCat = _useState12[1];
+
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useDispatch)();
+  var subCatSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useSelector)(function (state) {
+    return state.SubCatRaducer;
+  });
+  var catSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useSelector)(function (state) {
+    return state.CatRaducer;
+  });
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    dispatch((0,_Services_Actions_CatActions__WEBPACK_IMPORTED_MODULE_4__.getAllcats)());
+    dispatch((0,_Services_Actions_SubCatAction__WEBPACK_IMPORTED_MODULE_3__.getAllSubCats)());
+  }, []);
+
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(name),
+      _useState14 = _slicedToArray(_useState13, 2),
+      setNamee = _useState14[0],
+      setSetNamee = _useState14[1];
 
   function subCatAdd() {
     var formData = new FormData();
@@ -15035,26 +15260,39 @@ function AddSubCat() {
       formData.append('status', 1);
     }
 
+    if (parentCat != '') {
+      formData.append('parent_id', parentCat);
+    } else {
+      formData.append('parent_id', '');
+    }
+
     formData.append('user_id', user.id);
+    formData.append('user_role', user.role);
 
     if (catId !== '' && catId != 0 && 1 != '' && name !== '' && status != '') {
-      dispatch(createSubCatAc(formData));
+      dispatch((0,_Services_Actions_SubCatAction__WEBPACK_IMPORTED_MODULE_3__.createSubCatAc)(formData));
     }
   }
 
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    if (subCatSelector.subError == 'inserted') {
-      history.push('/allsubcat');
+  console.warn('subcatdata', subCatSelector.subCatData[0]);
+  console.warn('parent id', parentCat);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (subCatSelector.subError == 'Inserted') {
+      history.push('/allsubcats');
     } else if (subCatSelector.subError == 'already') {
-      setError("Sub Category Already Exits Please Diffrent Sub Category Add");
+      setError("Sub Category already Exits  ");
     } else if (subCatSelector.subError == 'error') {
       setError("Some error Please try Again Leater");
+    } else if (subCatSelector.subError == 'value_not') {
+      setError("Check Value Some Value Is missing");
+    } else if (subCatSelector.subError == 'user_not') {
+      setError("Please Login And try again");
     } else {}
 
     console.warn("SubSelector", subCatSelector);
     console.warn("Error", subCatSelector.subError);
   }, [subCatSelector]);
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (catId != '') {
       setError('');
     }
@@ -15063,81 +15301,92 @@ function AddSubCat() {
       setError('');
     }
   }, [catId, name]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_comman_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_comman_Header__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       id: "layoutSidenav",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_comman_Sidebar__WEBPACK_IMPORTED_MODULE_3__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_comman_Sidebar__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
         id: "layoutSidenav_content",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("main", {
-          children: [error != '' && error != 'Please Enter Sub Category Name' && error != 'Please Select Category' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("main", {
+          children: [error != '' && error != 'Please Enter Sub Category Name' && error != 'Please Select Category' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
             className: "alert alert-danger",
             role: "alert",
             children: error
-          }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("ol", {
+          }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("ol", {
             className: "breadcrumb m-4",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
               className: "breadcrumb-item",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
                 to: "/",
                 children: "Dashboard"
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("li", {
               className: "breadcrumb-item active",
-              children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
+              children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
                 to: "allsubcat",
                 children: " Sub Categories "
               }), " "]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
               className: "breadcrumb-item active",
               children: "Add "
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Group, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Group, {
               className: "mb-3 form-pro",
               controlId: "formBasicEmail",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Select, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Select, {
                 value: catId,
                 onChange: function onChange(e) {
                   return setCatId(e.target.value);
                 },
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("option", {
                   value: "0",
                   children: "Select Category"
-                }), data.map(function (item) {
-                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                }), catSelector.CatData[0] ? catSelector.CatData.map(function (item) {
+                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("option", {
                     value: item.id,
                     children: item.cat_name
                   }, item.id);
-                })]
-              }), error == 'Please Select Category' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-                className: "text-danger",
-                children: error
-              }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Control, {
+                }) : null]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Select, {
+                value: catId,
+                onChange: function onChange(e) {
+                  return setParentCat(e.target.value);
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("option", {
+                  value: "0",
+                  children: "Select Parent Sub Category"
+                }), subCatSelector.subCatData[0] ? subCatSelector.subCatData.map(function (item) {
+                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("option", {
+                    value: item.id,
+                    children: item.name
+                  }, item.id);
+                }) : null]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Control, {
                 type: "text",
-                className: "mt-5 p-3 ip",
+                className: "mt-4 p-2 ip",
                 onChange: function onChange(e) {
                   return setName(e.target.value);
                 },
                 placeholder: "Enter Sub Category Name"
-              }), error == 'Please Enter Sub Category Name' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
+              }), error == 'Please Enter Sub Category Name' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
                 className: "text-danger",
                 children: error
-              }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"].Select, {
+              }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Select, {
                 value: status,
                 className: "ip",
                 onChange: function onChange(e) {
                   return setStatus(e.target.value);
                 },
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("option", {
                   value: 1,
                   children: "Active"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("option", {
                   value: 0,
                   children: "Deactive"
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
                 className: "d-grid gap-2",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
                   variant: "primary",
                   onClick: subCatAdd,
                   size: "lg",
@@ -15170,11 +15419,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _comman_Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../comman/Header */ "./resources/js/components/backend/comman/Header.js");
 /* harmony import */ var _comman_Sidebar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../comman/Sidebar */ "./resources/js/components/backend/comman/Sidebar.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Table.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Table.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Services_Actions_SubCatAction__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../Services/Actions/SubCatAction */ "./resources/js/Services/Actions/SubCatAction.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -15192,7 +15443,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
- // import { getAllSubCats,changeStatusAc, deleteSubcatAc } from '../../../../Services/Actions/SubCatAction';
+
 
 
 
@@ -15207,7 +15458,7 @@ function AllSubCat() {
   var user = JSON.parse(localStorage.getItem('user-info'));
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
   var subCatSelect = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(function (state) {
-    return state.subCatRaducer;
+    return state.SubCatRaducer;
   });
 
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
@@ -15216,142 +15467,157 @@ function AllSubCat() {
       setError = _useState4[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    dispatch(getAllSubCats());
-  }, []);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    console.warn('check', subCatSelect.subCatData);
+    dispatch((0,_Services_Actions_SubCatAction__WEBPACK_IMPORTED_MODULE_4__.getAllSubCats)());
+  }, []); //  console.warn('check',subCatSelect)
 
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (subCatSelect.subError == 'deleted') {
-      setError("delete successfuly");
-      dispatch(getAllSubCats());
-    } else if (subCatSelect.subError == 'already_delete') {
-      setError('Already Deleted ');
-    } else if (subCatSelect.subError == 'status_changed') {
-      setError('Status changed successfully');
-      dispatch(getAllSubCats());
-    } else if (subCatSelect.subError == 'not_changed') {
-      setError("Status Can't Changed Contact Website Owner");
-    } else if (subCatSelect.subError == 'only_admin') {
-      setError("Only Admin Can Change Status");
+      setError('');
+      dispatch((0,_Services_Actions_SubCatAction__WEBPACK_IMPORTED_MODULE_4__.getAllSubCats)());
+    } else if (subCatSelect.subError == 'id_delete_empty') {
+      setError("you Can't delete beacause Sub categorie Not Avilable");
+      dispatch((0,_Services_Actions_SubCatAction__WEBPACK_IMPORTED_MODULE_4__.getAllSubCats)());
+    } else if (subCatSelect.subError == 'vendor_delete_empty') {
+      setError('You delete only Your Sub categories ');
+    } else if (subCatSelect.subError == 'user_delete_empty') {
+      setError('please login and than try to delete ');
+      dispatch((0,_Services_Actions_SubCatAction__WEBPACK_IMPORTED_MODULE_4__.getAllSubCats)());
+    } else if (subCatSelect.subError == 'changed') {
+      setError('');
+      dispatch((0,_Services_Actions_SubCatAction__WEBPACK_IMPORTED_MODULE_4__.getAllSubCats)());
+    } else if (subCatSelect.subError == 'id_status_empty') {
+      setError("you can't changed beacause Sub categorie Not Avilable ");
+      dispatch((0,_Services_Actions_SubCatAction__WEBPACK_IMPORTED_MODULE_4__.getAllSubCats)());
+    } else if (subCatSelect.subError == 'user_status_empty') {
+      setError("Please login and than try to status change");
+      dispatch((0,_Services_Actions_SubCatAction__WEBPACK_IMPORTED_MODULE_4__.getAllSubCats)());
+    } else if (subCatSelect.subError == 'vendor_status_empty') {
+      setError("you can Change  only your Sub Categories Status");
+      dispatch((0,_Services_Actions_SubCatAction__WEBPACK_IMPORTED_MODULE_4__.getAllSubCats)());
     } else if (subCatSelect.subError == 'error') {
-      setError("Some Techniqule Error Please Try Again Leater");
+      setError("Some Technical Error Please Try Again leater");
+      dispatch((0,_Services_Actions_SubCatAction__WEBPACK_IMPORTED_MODULE_4__.getAllSubCats)());
     }
   }, [subCatSelect]);
-  console.warn("Empty", subCatSelect.subCatData);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_comman_Header__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_comman_Header__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
       id: "layoutSidenav",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_comman_Sidebar__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_comman_Sidebar__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
         id: "layoutSidenav_content",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("main", {
-          children: [error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "alert alert-danger",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("main", {
+          children: [error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            className: "alert alert-danger text-center",
             role: "alert",
             children: [" ", error, " "]
-          }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
             className: "container-fluid px-4 mt-3",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("ol", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("ol", {
               className: "breadcrumb mb-4",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
                 className: "breadcrumb-item",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
                   to: "/",
                   children: "Dashboard"
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
                 className: "breadcrumb-item active",
                 children: " Sub Categories "
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
                 className: "breadcrumb-item active",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
                   to: "/addsubcat",
                   children: "Add "
                 })
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
               className: "card mb-4",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
                 className: "card-header",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
                   className: "fas fa-table me-1"
                 }), "Sub Categories"]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
                 className: "card-body table-responsive",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
                   striped: true,
                   bordered: true,
                   hover: true,
                   size: "sm",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("thead", {
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                        className: "text-justify text-capitalize",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("thead", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                        className: "text-center text-capitalize",
                         children: "Sno"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                        className: "text-center",
                         style: {
                           width: 350
                         },
                         children: "Name"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                        className: "text-center",
                         style: {
                           width: 150
                         },
                         children: "Categories"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                        className: "text-center",
                         style: {
                           width: 150
                         },
                         children: "Status"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                        className: "text-center",
                         style: {
                           width: 350
                         },
                         children: "Action"
                       })]
                     })
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("tbody", {
-                    children: subCatSelect.subError == 'show_all_sub' ? subCatSelect.subCatData.map(function (item, key) {
-                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
-                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("tbody", {
+                    children: subCatSelect.subCatData[0] ? subCatSelect.subCatData.map(function (item, key) {
+                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
+                        className: "text-center",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
                           children: key + 1
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
                           children: item.name
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
                           children: item.cat_name
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
                           children: item.status == '1' ? 'Active' : 'Deactive'
-                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("td", {
-                          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("td", {
+                          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
                             to: "/updatesubcat/" + item.id,
                             className: "btn btnpro btn-success mb-2",
                             children: "Edit"
-                          }), item.status == '0' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                          }), item.status == '0' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
                             onClick: function onClick() {
-                              dispatch(changeStatusAc(item.id, user.id, user.role));
+                              dispatch((0,_Services_Actions_SubCatAction__WEBPACK_IMPORTED_MODULE_4__.changeStatusAc)(item.id, user.id, user.role));
                             },
                             className: " btnpro btn-primary mb-2",
                             children: "Active"
-                          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
                             onClick: function onClick() {
-                              dispatch(changeStatusAc(item.id, user.id, user.role));
+                              dispatch((0,_Services_Actions_SubCatAction__WEBPACK_IMPORTED_MODULE_4__.changeStatusAc)(item.id, user.id, user.role));
                             },
                             className: " btnpro btn-danger mb-2",
                             children: "Deactive"
-                          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+                          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
                             onClick: function onClick() {
-                              dispatch(deleteSubcatAc(item.id, user.id, user.role));
+                              dispatch((0,_Services_Actions_SubCatAction__WEBPACK_IMPORTED_MODULE_4__.deleteSubcatAc)(item.id, user.id, user.role));
                             },
-                            className: " btnpro btn-danger",
+                            className: "btnpro btn-danger",
                             children: "Delete"
                           })]
                         })]
                       }, key);
                     }) : null
                   })]
-                }), subCatSelect.subError == 'show_not' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                }), subCatSelect.subError == 'empty' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
                   "class": "alert alert-success",
                   role: "alert",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h4", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h4", {
                     "class": "alert-heading",
                     children: "Empty Data ! Add New Sub Category"
                   })
@@ -15365,7 +15631,242 @@ function AllSubCat() {
   });
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AllSubCat);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.withRouter)(AllSubCat));
+
+/***/ }),
+
+/***/ "./resources/js/components/backend/Pages/SubCat/UpdateSubCat.js":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/backend/Pages/SubCat/UpdateSubCat.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _comman_Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../comman/Header */ "./resources/js/components/backend/comman/Header.js");
+/* harmony import */ var _comman_Sidebar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../comman/Sidebar */ "./resources/js/components/backend/comman/Sidebar.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Form.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _Services_Actions_SubCatAction__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../Services/Actions/SubCatAction */ "./resources/js/Services/Actions/SubCatAction.js");
+/* harmony import */ var _Services_Actions_CatActions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../Services/Actions/CatActions */ "./resources/js/Services/Actions/CatActions.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+function UpdateSubCat(props) {
+  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useHistory)();
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+      _useState2 = _slicedToArray(_useState, 2),
+      name = _useState2[0],
+      setName = _useState2[1];
+
+  var user = JSON.parse(localStorage.getItem('user-info'));
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+      _useState4 = _slicedToArray(_useState3, 2),
+      catId = _useState4[0],
+      setCatId = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+      _useState6 = _slicedToArray(_useState5, 2),
+      error = _useState6[0],
+      setError = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+      _useState8 = _slicedToArray(_useState7, 2),
+      status = _useState8[0],
+      setStatus = _useState8[1];
+
+  var id = props.match.params.id;
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
+  var subCatSelect = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(function (state) {
+    return state.SubCatRaducer;
+  });
+  var catData = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(function (state) {
+    return state.CatRaducer;
+  }); // console.warn('id',props.match.params.id)
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    dispatch((0,_Services_Actions_SubCatAction__WEBPACK_IMPORTED_MODULE_4__.getSingleSubCat)(id));
+    dispatch((0,_Services_Actions_CatActions__WEBPACK_IMPORTED_MODULE_5__.getAllcats)());
+  }, []); // console.warn("Categories",catData.CatData);
+
+  function subCatUpdate() {
+    var formData = new FormData();
+
+    if (name == '') {
+      formData.append('name', subCatSelect.subCatData.name);
+    } else {
+      formData.append('name', name);
+    }
+
+    if (catId == '') {
+      formData.append('cat_id', subCatSelect.subCatData.cat_id);
+    } else {
+      formData.append('cat_id', catId);
+    }
+
+    if (status == '1' || status == '0') {
+      formData.append('status', status);
+    } else {
+      formData.append('status', subCatSelect.subCatData.status);
+    }
+
+    formData.append('user_id', user.id);
+    formData.append('user_role', user.role);
+
+    if (user.id && user.role && id) {
+      dispatch((0,_Services_Actions_SubCatAction__WEBPACK_IMPORTED_MODULE_4__.updateSubCatAc)(id, formData));
+    }
+  }
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (subCatSelect.subError == 'updated') {
+      setError('Sub category Updated Successfully');
+      history.push('/allsubcats');
+    } else if (subCatSelect.subError == 'empty_id') {
+      setError('Sub category Not available');
+    } else if (subCatSelect.subError == 'name_already') {
+      setError('Enter  other Name this name Is alerady exits ');
+    } else if (subCatSelect.subError == 'not_vendor') {
+      setError(' You Can Update only Your Sub Category ');
+    } else if (subCatSelect.subError == 'error') {
+      setError('Somthong wrong Contact admin owner support@admin.com');
+    } else {
+      setError('');
+    }
+  }, [subCatSelect]); //  console.warn("updated",subCatSelect);
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_comman_Header__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+      id: "layoutSidenav",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_comman_Sidebar__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        id: "layoutSidenav_content",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("main", {
+          children: [error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+            className: "alert alert-danger",
+            role: "alert",
+            children: error
+          }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("ol", {
+            className: "breadcrumb m-4",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
+              className: "breadcrumb-item",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
+                to: "/",
+                children: "Dashboard"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("li", {
+              className: "breadcrumb-item active",
+              children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
+                to: "allsubcat",
+                children: " Sub Categories "
+              }), " "]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
+              className: "breadcrumb-item active",
+              children: "Update "
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"], {
+            className: "mb-3 form-pro",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Select, {
+              value: catId,
+              onChange: function onChange(e) {
+                return setCatId(e.target.value);
+              },
+              children: [catData.CatData != '' ? catData.CatData.map(function (item, key) {
+                return subCatSelect.subCatData != '' ? item.cat_id == subCatSelect.subCatData.cat_id ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("option", {
+                  value: item.cat_id,
+                  children: item.cat_name
+                }, key) : null : null;
+              }) : null, catData.CatData != '' ? catData.CatData.map(function (item, key) {
+                return subCatSelect.subCatData != '' ? item.cat_id != subCatSelect.subCatData.cat_id ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("option", {
+                  value: item.cat_id,
+                  children: item.cat_name
+                }, key) : null : null;
+              }) : null]
+            }), subCatSelect.subCatData != '' && subCatSelect.subCatData.id == id ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Control, {
+              type: "text",
+              defaultValue: subCatSelect.subCatData.name,
+              className: "mt-5 p-3 ip",
+              onChange: function onChange(e) {
+                return setName(e.target.value);
+              },
+              placeholder: "Enter Sub Category Name"
+            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Control, {
+              type: "text",
+              className: "mt-5 p-3 ip",
+              onChange: function onChange(e) {
+                return setName(e.target.value);
+              },
+              placeholder: "Enter Sub Category Name"
+            }), "  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_9__["default"].Select, {
+              value: status,
+              className: "ip",
+              onChange: function onChange(e) {
+                return setStatus(e.target.value);
+              },
+              children: subCatSelect.subCatData != '' && subCatSelect.subCatData.status == 1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("option", {
+                  value: "1",
+                  children: "Active"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("option", {
+                  value: "0",
+                  children: "Deactive"
+                }), " "]
+              }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("option", {
+                  value: "0",
+                  children: "Deactive"
+                }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("option", {
+                  value: "1",
+                  children: "Active"
+                }), " "]
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+              className: "d-grid gap-2",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+                variant: "primary",
+                onClick: subCatUpdate,
+                size: "lg",
+                children: "Update"
+              })
+            })]
+          })]
+        })
+      })]
+    })]
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.withRouter)(UpdateSubCat));
 
 /***/ }),
 
@@ -15670,8 +16171,8 @@ function AllTags() {
     return state.TagRaducer.error;
   });
   var user = JSON.parse(localStorage.getItem('user-info'));
-  var error = '';
-  console.warn('tagsel', tagsSel);
+  var error = ''; //  console.warn('tagsel',tagsSel)
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     return dispatch((0,_Services_Actions_TagActions__WEBPACK_IMPORTED_MODULE_4__.getAllTagAc)());
   }, []);
@@ -15695,9 +16196,8 @@ function AllTags() {
     }
 
     dispatch((0,_Services_Actions_TagActions__WEBPACK_IMPORTED_MODULE_4__.getAllTagAc)());
-  }
+  } // console.warn('role',user.role)
 
-  console.warn('role', user.role);
 
   function statusChange(id) {
     dispatch((0,_Services_Actions_TagActions__WEBPACK_IMPORTED_MODULE_4__.statusChangeTagButon)(id, user.id, 101));
@@ -15943,10 +16443,10 @@ function UpdateTag(props) {
   });
   var updateState = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(function (state) {
     return state.TagRaducer;
-  });
-  console.warn('TagCheck', TagState.name);
-  console.warn('catCheck data', catData.CatData);
-  console.warn('user', user.role); //  console.warn("Check Finf",TagState)
+  }); //  console.warn('TagCheck',TagState.name)
+  //  console.warn('catCheck data', catData.CatData)
+  //  console.warn('user', user.role)
+  //  console.warn("Check Finf",TagState)
 
   function tagupdate() {
     var formData = new FormData();
@@ -15972,13 +16472,13 @@ function UpdateTag(props) {
     if (id != '' && user.id != '' && user.role != '') {
       formData.append('user_id', id);
       formData.append('user_id', user.id);
-      formData.append('user_role', user.role);
-      console.warn('he', formData);
+      formData.append('user_role', user.role); // console.warn('he',formData)
+
       dispatch((0,_Services_Actions_TagActions__WEBPACK_IMPORTED_MODULE_4__.updatedTag)(formData, id));
     }
-  }
+  } // console.warn('update',updateState.error);
 
-  console.warn('update', updateState.error);
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (updateState.error == 'not_vendor') {
       setError("You Can't Update Only Vendor can Update");

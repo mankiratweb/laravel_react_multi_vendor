@@ -2,7 +2,9 @@ import { GET_ALL_SUBCATS, CHANGE_STATUS_SUBCATS_BUTTON, CREATE_SUBCATS, DELETE_S
 
 const initialState = {
     subCatData: [],
-    subError: ''
+    subError: '',
+    show: '',
+
 }
 
 
@@ -12,22 +14,20 @@ export default (state = initialState, { type, payload, msg }) => {
 
     switch (type) {
         case GET_ALL_SUBCATS:
-            if(msg=='show_all_sub'){
-            return {
-                ...state,
-                subError: msg,
-                subCatData: payload
-            }
-        }else{ return { subError: msg } }
+            if (msg == 'show') {
+                return {
 
-
-
-
+                    ...state,
+                    subError: msg,
+                    show: msg,
+                    subCatData: payload
+                }
+            } else { return { subError: msg } }
 
 
         case FIND_SINGLE_SUBCATS:
-            if(msg=='get_single'){
-               
+            if (msg == 'show') {
+
                 return {
                     ...state,
                     subError: msg,
@@ -35,37 +35,40 @@ export default (state = initialState, { type, payload, msg }) => {
                 }
 
             }
-            else{ return { subError: msg  }   }
+            else { return { subError: msg } }
 
 
 
 
 
         case CHANGE_STATUS_SUBCATS_BUTTON:
-            if(msg=='status_changed'){
+            if (msg == 'status_changed') {
                 return {
                     ...state,
                     subError: msg,
                     subCatData: state.subCatData.map((subCat) =>
-                        subCat.id == payload.id ? state.subCatData:payload )
+                        subCat.id == payload.id ? state.subCatData : payload)
                 }
 
             }
-            else{
-                return { subError: msg    }
+            else {
+                return { subError: msg }
             }
-          
-            case CREATE_SUBCATS:
+
+
+
+        case CREATE_SUBCATS:
             if (msg == "inserted") {
                 return {
                     ...state,
                     subError: msg,
-                    subCatData: payload
+                    subCatData: payload,
+                    
                 }
             }
             else {
                 return {
-
+                    subCatData: payload,
                     subError: msg
                 }
             }
@@ -76,28 +79,35 @@ export default (state = initialState, { type, payload, msg }) => {
                     ...state,
                     subError: msg,
                     subCatData: state.subCatData.filter((subCat) =>
-                        subCat.id !== payload)
+                        subCat.id !== payload),
+
                 }
 
             }
             else {
-                return {  subError: msg
+                return {
+                    subError: msg
                 }
             }
-        
+
+
+
+
+
+
         case UPDATED_SUBCATS:
-            if(msg=="updated"){
-                return{
+            if (msg != "empty_id") {
+                return {
                     ...state,
                     subError: msg,
-                    subCatData: state.subCatData.filter((subCat)=>
-                    subCat.id==payload.id?state.subCatData:payload
+                    subCatData: isNaN(state.subCatData) ? payload : state.subCatData.filter((subCat) =>
+                        subCat.id == payload.id ? payload : subCat
                     )
                 }
-            }  
-            else{
-                return { subError:msg }
-            }        
+            }
+            else {
+                return { subError: msg }
+            }
 
 
         default:
