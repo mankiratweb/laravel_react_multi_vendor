@@ -10,6 +10,12 @@ import AllPro from './Pages/Products/AllPro';
 import AddPro from './Pages/Products/AddPro';
 import AllSubCat from './Pages/SubCat/AllSubCat';
 import AddSubCat from './Pages/SubCat/AddSubCat';
+import Register from './Pages/Users/Register';
+import Login from './Pages/Users/Login';
+import Protected from './Pages/Users/Protected';
+import UpdateTag from './Pages/Tags/UpdateTag';
+
+ 
 
 
 function AdminPanel(){
@@ -18,20 +24,31 @@ function AdminPanel(){
  
          
 <Switch>
-    <Route exact path="/" component={Dashboard} /> 
-    <Route path="/alltags" component={AllTags} /> 
-    <Route path="/addtag" component={AddTag}  /> 
+    {/* Users Start  */}
+<Route exact path="/register" component={Register} /> 
+    <Route exact path="/login" component={Login} /> 
 
-    <Route path="/allcats"  component={AllCat} />  
-    <Route  path="/addcat"  component={AddCat} />  
+    {/* Users End  */}
 
-    <Route   path="/allsubcats"  component={AllSubCat} />  
-    <Route   path="/addsubcat"  component={AddSubCat} />  
+    {/* Dashboard Start  */}
+    <Route exact path="/"> <Protected cmp={Dashboard}/> </Route> 
+    <Route exact path="/dashboard" > <Protected cmp={Dashboard} />  </Route>
+    {/* Dashboard End  */}
+    
+    <Route path="/alltags" ><Protected cmp={AllTags} />  </Route> 
+    <Route path="/addtag" > <Protected cmp={AddTag} />  </Route>
+    <Route path="/updatetag/:id" > <Protected cmp={UpdateTag} />  </Route>
+
+    <Route path="/allcats" >  <Protected cmp={AllCat} />  </Route>
+    <Route  path="/addcat" > <Protected cmp={AddCat} /> </Route> 
+
+    <Route   path="/allsubcats" >  <Protected cmp={AllSubCat} /> </Route>
+    <Route   path="/addsubcat"  > <Protected cmp={AddSubCat} />  </Route>
 
 
 
-    <Route  path="/allpros"  component={AllPro} />  
-    <Route  path="/addpro"  component={AddPro} />  
+    <Route  path="/allpros"  >  <Protected cmp={AllPro} /> </Route>
+    <Route  path="/addpro"  >  <Protected cmp={AddPro} /> </Route>
 
     
 </Switch>

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import AdminPanel from './backend/AdminPanel';
 import {Provider} from 'react-redux';
 import store from '../store';
+import '../bootstrap'
 import { BrowserRouter } from 'react-router-dom';
 
 

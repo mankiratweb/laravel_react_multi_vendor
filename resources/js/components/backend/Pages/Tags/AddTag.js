@@ -3,10 +3,10 @@ import Header from '../../comman/Header';
 import Sidebar from '../../comman/Sidebar';
 import {Form , Button} from 'react-bootstrap';
 import { useState } from 'react';
- import {Link, useHistory} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import { useDispatch,useSelector } from 'react-redux';
 import { createTagAc } from '../../../../Services/Actions/TagActions';
-
+import {getAllcats} from '../../../../Services/Actions/CatActions';
 
 
 
@@ -23,13 +23,13 @@ const [name , setName] = useState("");
 const [catId , setCatId] = useState("");
 const [data, setData]=useState([])
 const tagAddSelect = useSelector(state => state.TagRaducer)
-
+const catAddSelect = useSelector(state => state.CatRaducer)
+ 
+ 
 
 useEffect( async() => {
      
-    let result  = await fetch("http://127.0.0.1:8000/api/allcat");
-    result = await result.json();
-  setData(result);
+ dispatch(getAllcats());
    
 
  }, [])
@@ -56,7 +56,7 @@ useEffect( async() => {
         
     
         if(status==0){
-            formData.append('status',status);
+            formData.append('status',0);
         }
         else{
             formData.append('status',1);
@@ -69,15 +69,13 @@ useEffect( async() => {
         else{
             formData.append('cat_id',catId);
            
-        }
-    
-    
-    
-        
-    formData.append('user_id',user.id);
-    console.warn("FormData",formData)
+        } 
+           formData.append('user_id',user.id);
+ 
+           formData.append('userRole',user.role);
+ 
 
-    if(catId!=='' && 1!='' && name!=='' && status==1 || status==0){
+    if(catId!=='' && name!=='' && user.id!='' ){
 
 
 dispatch(createTagAc(formData));
@@ -88,26 +86,30 @@ dispatch(createTagAc(formData));
  
 }
 
-console.warn("Add Tag result",tagAddSelect.error)
+ 
 useEffect( async() => {
     
-    if(tagAddSelect.error.msg=='already'){
+    if(tagAddSelect.error=='already'){
    setError("Tag is Alerady exits")
     }
-    else if(tagAddSelect.error.msg=='update'){
+    else if(tagAddSelect.error=='Inserted'){
 history.push('/alltags');
     }
-    else if(tagAddSelect.error=='Some_Error'){
-        setError("Somer Error Try Again Leater and Contact Website Owner")
-    }else{
-
+    else if(tagAddSelect.error=='value_not'){
+        setError("Technocal Issue contact@asktohelp.com")
+    }else if(tagAddSelect.error=='user_not'){
+        setError("Only Vendor Add Tag Contact Admin Owner ")
+    }
+    else{
+        setError("")
+  
     }
  
   }, [tagAddSelect,dispatch])
 
 
-
-
+ 
+ 
 
 
 
@@ -128,13 +130,13 @@ history.push('/alltags');
 
 <div id="layoutSidenav_content">
 
-{error?<div className="alert alert-danger" role="alert">
+{error && catId!='' && name!='' ?<div className="text-center alert alert-danger" role="alert">
   {error}
 </div>:null}
                     <main>
 
 
-                    <h1>Add Tag</h1>
+                    <h1 className='text-center mt-4'>Add Tag</h1>
                     <ol className="breadcrumb m-4">
                                 <li className="breadcrumb-item"><Link to="/">Dashboard</Link></li>
                                 <li className="breadcrumb-item active"> <Link to="alltags"> Tags</Link> </li>
@@ -155,20 +157,20 @@ history.push('/alltags');
   
   <Form.Select value={catId}  onChange={((e)=>setCatId(e.target.value))} >
 <option value="0">Select Category</option>
-{
-data.map((item)=>
+{catAddSelect.tagsData?
+catAddSelect.tagsData.map((item)=>
 
 <option key={item.id} value={item.id}>{item.cat_name}</option>
-)
+):null
 
 }
 </Form.Select>
-<span className="error"> {error == "Please Select Category" ? error : null } </span>
+<span className="error text-justify"> {error == "Please Select Category" ? error : null } </span>
  
     
     <Form.Control type="text"   value={name} className="mt-5 p-3 ip"  onChange={((e)=>setName(e.target.value))} placeholder="Enter Tag Name" />
     
-    <span className="error"> {error== "Please Enter Tag Name" ? error : null } </span>
+    <span className="error text-center"> {error== "Please Enter Tag Name" ? error : null } </span>
     <br />
 <br />
          
@@ -177,9 +179,9 @@ data.map((item)=>
     
      <Form.Select value={status}  className="ip" onChange={((e)=>setStatus(e.target.value))}>
     
-    <option>Select Status</option>
-    <option value = {1}>Active</option>
-    <option value={0}>Deactive</option>
+ 
+    <option value = '1'>Active</option>
+    <option value='0'>Deactive</option>
   </Form.Select>
   <span className="error"> { error=="Please Select Status" ? error : null } </span>
   <br /><br />

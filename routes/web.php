@@ -13,6 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/register', function () {
+    return view('welcome');
+});
+
+Route::get('/login', function () {
+    return view('welcome');
+});
+Route::get('/dashboard', function () {
+    return view('welcome');
+});
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -24,6 +37,18 @@ Route::get('/alltags', function () {
 Route::get('/addtag', function () {
     return view('welcome');
 });
+
+Route::get('/updatetag/{id}', function () {
+    return view('welcome');
+});
+
+
+
+
+
+
+
+
 Route::get('/allcats', function () {
     return view('welcome');
 });

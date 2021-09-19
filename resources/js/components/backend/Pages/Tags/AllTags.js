@@ -10,12 +10,11 @@ import {deleteSingleTag, getAllTagAc, statusChangeTagButon} from '../../../../Se
 
 function AllTags() {
 const dispatch = useDispatch()
-const tagsSel = useSelector((state) => state.TagRaducer.tagsData);
+const tagsSel = useSelector((state) => state.TagRaducer);
 const tagError = useSelector((state) => state.TagRaducer.error);
 const user = JSON.parse(localStorage.getItem('user-info'));
-let error = '';
- 
- console.warn('id',)
+let  error = '';
+ console.warn('tagsel',tagsSel)
 
 
 
@@ -28,39 +27,75 @@ let error = '';
   function deleteTag(id){
     
     
-     dispatch(deleteSingleTag(id,user.id))
+     dispatch(deleteSingleTag(id,user.id,user.role))
     
-       dispatch(getAllTagAc())
+     
    
+    deleteTagError();
     
+
+ 
+
+}
+
+function deleteTagError(){
+  if(tagError=='deleted'){
     
+    alert('Deleted Successfully')
+   
+  }
+  else if(tagError=='fault'){
+    alert('Something Wrong Contact Owner')
+  }
+  else if(tagError=='error_deleted'){
+    alert('Already Deleted ');
+  }
+  else if(tagError=='tag_not_exits'){
+    alert('This tag is not Exits');
+  }
+  else if(tagError=='user_not_exits'){
+    alert('user not Exits ');
+  }
+
+  dispatch(getAllTagAc())
+
+
 
 }
   
+console.warn('role',user.role)
  
  function   statusChange(id){
  
-         dispatch(statusChangeTagButon(id,1,101));
+         dispatch(statusChangeTagButon(id,user.id,101));
             
-         
-         if(tagError=='change'){
-          error='change';
-            
-         } if(tagError=='not_change'){
-          error='not_change';
-        }
-        dispatch(getAllTagAc());
-
-
-      
-      
+         statusErrorSet();
+ 
 
 }
 
 
-console.warn("error",tagError);
-console.warn("tag",tagsSel);
+ 
 
+function statusErrorSet(){
+  if(tagError=='show_not'){
+      
+alert('Tag Not Found')
+      
+   } if(tagError=='not_change'){
+    
+     alert('Status Not  Change')
+  }
+  dispatch(getAllTagAc())
+
+}
+ 
+
+
+
+
+
+ 
     return (
         <>
 
@@ -79,16 +114,21 @@ console.warn("tag",tagsSel);
                             <li className="breadcrumb-item"><Link to="/">Dashboard</Link></li>
                             <li className="breadcrumb-item active"> Tags </li>
                          
-                            <li  className="breadcrumb-item active"   ><Link to="/addtags">Add </Link></li>
+                            <li  className="breadcrumb-item active"   ><Link to="/addtag">Add </Link></li>
                         </ol>
                         {
-                              error=='not_change'?<div className="alert alert-info" role="alert">
+                                tagError =='not_change'?
+                              
+                              <div className="alert alert-info" role="alert">
                               Only Admin Can Change This Status 
                               
-                            </div>:error=='show_not'?<div className="alert alert-danger" role="alert">
+                            </div>:    tagError=='show_not'?<div className="alert alert-danger" role="alert">
                               This Tag Not Exits
                                
-                            </div>:  null
+                            </div>:  tagError=='delete'?<div className="alert alert-info" role="alert">
+                              Delete Succefully
+                            
+                            </div>:null
                             }
                      
                         <div className="card mb-4">
@@ -113,8 +153,8 @@ console.warn("tag",tagsSel);
   </thead>
   <tbody>
     {
-tagsSel?
-tagsSel.map((item , key)=>
+tagsSel.tagsData[0]?
+tagsSel.tagsData.map((item , key)=>
 
 
 <tr  key={key}>

@@ -1,3 +1,10 @@
+//Users
+
+export const CREATE_USER= "CREATE_USER";
+export const LOGIN_USER = "LOGIN_USER";
+
+
+
 
 // Tags
 export const GET_ALL_TAGS = "GET_ALL_TAGS";
